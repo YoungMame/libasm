@@ -1,6 +1,6 @@
-#include "main.hpp"
+#include "main.h"
 
-void ft_strlen_test(char *str)
+int ft_strlen_test(char *str)
 {
 
 }

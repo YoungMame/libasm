@@ -1,3 +1,5 @@
+#include "main.h"
+
 int main()
 {
     char *strlen_test_string = "Hello World 42";

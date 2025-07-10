@@ -11,23 +11,23 @@ SRC_PATH         = srcs/
 SRCS             = ft_strlen.s
 
 TEST_PATH        = tests/
-TESTS             = test_ft_strlen.c
+TESTS             = main.c test_ft_strlen.c
 
-OBJS_DIR        = ./.obj
+OBJS_DIR        = ./.obj/
 SRCS_OBJS       = $(patsubst %.s, $(OBJS_DIR)%.o, $(SRCS))
 TEST_OBJS       = $(patsubst %.c, $(OBJS_DIR)%.o, $(TESTS))
 
 all: $(NAME)
 
-$(NAME): $(SRCS_OBJS) Makefile
+$(NAME): $(SRCS_OBJS)
 	$(AR_RCS) $@ $^
 
 $(OBJS_DIR)%.o : $(SRC_PATH)%.s
-	mkdir -p $@
+	mkdir -p $(dir $@)
 	$(NASM) $(NASM_FLAGS) $< -o $@
 
 $(OBJS_DIR)%.o : $(TEST_PATH)%.c
-	mkdir -p $@
+	mkdir -p $(dir $@)
 	$(CC) $(CC_FLAGS) -c $< -o $@
 
 test: $(TEST_OBJS) $(SRCS_OBJS)

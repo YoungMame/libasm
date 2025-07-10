@@ -5,4 +5,4 @@
 
 
 
-void ft_strlen_test(char *str);
+int ft_strlen_test(char *str);
