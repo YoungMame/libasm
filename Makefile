@@ -3,12 +3,12 @@ TEST_PROGRAM     = libasm_tester
 AR_RCS             = ar rcs
 
 NASM = nasm
-NASM_FLAGS = -felf64 -DPIC
+NASM_FLAGS = -felf64
 CC = gcc
-CC_FLAGS = -Wall -Wextra -Werror -Iincludes -fPIE
+CC_FLAGS = -Wall -Wextra -Werror -Iincludes
 
 SRC_PATH         = srcs/
-SRCS             = ft_strlen.s
+SRCS             = ft_strlen.s ft_strcpy.s ft_write.s ft_strdup.s
 
 TEST_PATH        = tests/
 TESTS             = main.c test_ft_strlen.c
@@ -31,7 +31,7 @@ $(OBJS_DIR)%.o : $(TEST_PATH)%.c
 	$(CC) $(CC_FLAGS) -c $< -o $@
 
 test: $(TEST_OBJS) $(SRCS_OBJS)
-	$(CC) $(CC_FLAGS) -o $(TEST_PROGRAM) $^
+	$(CC) $(CC_FLAGS) -no-pie -o $(TEST_PROGRAM) $^
 
 clean:
 	rm -rf $(OBJS_DIR)
