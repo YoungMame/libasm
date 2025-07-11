@@ -3,5 +3,5 @@
 int main()
 {
     char *strlen_test_string = "Hello World 42";
-    printf("ft_strlen_test(%s) = %i\n" ,strlen_test_string, ft_strlen_test(strlen_test_string));
+    printf("ft_strlen(%s) = %li\n" ,strlen_test_string, ft_strlen(strlen_test_string));
 }
