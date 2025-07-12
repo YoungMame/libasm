@@ -91,3 +91,8 @@ r9 : 6e argument
 rsp : Pointeur de pile (stack pointer)
 
 rbp : Base pointer (pointeur de base pour la pile)
+
+al = lowest byte of rax
+bl = lowest byte of rbx
+cl = lowest byte of rcx
+dl = lowest byte of rdx

@@ -8,10 +8,10 @@ CC = gcc
 CC_FLAGS = -Wall -Wextra -Werror -Iincludes
 
 SRC_PATH         = srcs/
-SRCS             = ft_strlen.s ft_strcpy.s ft_write.s ft_strdup.s
+SRCS             = ft_strlen.s ft_strcpy.s ft_write.s ft_read.s ft_strdup.s ft_strcmp.s
 
 TEST_PATH        = tests/
-TESTS             = main.c test_ft_strlen.c
+TESTS             = main.c
 
 OBJS_DIR        = ./.obj/
 SRCS_OBJS       = $(patsubst %.s, $(OBJS_DIR)%.o, $(SRCS))
