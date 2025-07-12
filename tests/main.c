@@ -9,10 +9,19 @@ int main()
     // ft_write //
     ft_write(1, "Hello World 42\n", 15);
 
+    int write_invalid_fd = 42;
+    int write_result = ft_write(write_invalid_fd, "Hello World 42\n", 15);
+    if (write_result < 0) {
+        printf("ft_write failed, errno: %i\n", errno);
+    } else {
+        printf("ft_write wrote %d bytes\n", write_result);
+    }
+
+    printf("\n");
+
     // ft read //
     char read_buffer[100]; 
     const int  fd = open("tests/test.txt", O_RDONLY);
-    printf("%i", fd);
     if (fd < 0) {
         perror("Failed to open file");
         return 1;
@@ -20,10 +29,24 @@ int main()
     int bytes_read = ft_read(fd, read_buffer, sizeof(read_buffer));
     if (bytes_read < 0) {
         close(fd);
-        return 1;
+        printf("ft_read failed, errno: %i\n", errno);
     }
-    printf("ft_read read %d bytes: %s\n", bytes_read, read_buffer);
-    close(fd);
+    else {
+        read_buffer[bytes_read] = '\0';
+        printf("ft_read read %d bytes: %s\n", bytes_read, read_buffer);
+        close(fd);
+    }
+
+
+    int invalid_fd = 42;
+    bytes_read = ft_read(invalid_fd, read_buffer, sizeof(read_buffer));
+    if (bytes_read < 0) {
+        printf("ft_read failed with invalid fd %d, errno: %i\n", invalid_fd, errno);
+    } else {
+        printf("ft_read read %d bytes from invalid fd: %s\n", bytes_read, read_buffer);
+    }
+
+    printf("\n");
 
     // ft_strcpy //
     char *strcpy_test_string = "Hello World 42";
@@ -44,7 +67,43 @@ int main()
     else
     {
         printf("ft_strdup failed\n");
+        printf("Error, errno: %i\n", errno);
     }
+
+    char *strdup_test_string2 = "";
+    char *strdup_result2 = ft_strdup(strdup_test_string2);
+    if (strdup_result2)
+    {
+        printf("ft_strdup(%s) = %s\n", strdup_test_string2, strdup_result2);
+        free(strdup_result2);
+    }
+    else
+    {
+        printf("ft_strdup failed\n");
+        printf("Error, errno: %i\n", errno);
+    }
+
+    char *strdup_test_string3 = "你好世界";
+    char *strdup_result3 = ft_strdup(strdup_test_string3);
+    if (strdup_result3)
+    {
+        printf("ft_strdup(%s) = %s\n", strdup_test_string3, strdup_result3);
+        strdup_result3[0] = '4';
+        strdup_result3[1] = '2';
+        strdup_result3[2] = 'L';
+        strdup_result3[3] = 'H';
+        strdup_result3[4] = '\0';
+        printf("Modified strdup_result3: %s\n", strdup_result3);
+        printf("Original strdup_test_string2: %s\n", strdup_test_string3);
+        free(strdup_result3);
+    }
+    else
+    {
+        printf("ft_strdup failed\n");
+        printf("Error, errno: %i\n", errno);
+    }
+
+    printf("\n");
 
     // ft_strcmp //
     char *str1 = "Hello";

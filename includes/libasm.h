@@ -4,6 +4,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <errno.h>
 
 // libasm
 size_t ft_strlen(const char *str);
