@@ -2,11 +2,11 @@
 
 int main()
 {
-    // ft_strlen //
+    // // ft_strlen //
     char *strlen_test_string = "Hello World 42";
     printf("ft_strlen(%s) = %li\n" ,strlen_test_string, ft_strlen(strlen_test_string));
 
-    // ft_write //
+    // // ft_write //
     ft_write(1, "Hello World 42\n", 15);
 
     int write_invalid_fd = 42;
@@ -17,9 +17,9 @@ int main()
         printf("ft_write wrote %d bytes\n", write_result);
     }
 
-    printf("\n");
+    // printf("\n");
 
-    // ft read //
+    // // ft read //
     char read_buffer[100]; 
     const int  fd = open("tests/test.txt", O_RDONLY);
     if (fd < 0) {
@@ -48,7 +48,7 @@ int main()
 
     printf("\n");
 
-    // ft_strcpy //
+    // // ft_strcpy //
     char *strcpy_test_string = "Hello World 42";
     char strcpy_test_empty[100] = "";
     printf("strcpy_test_empty after ft_strlen(%s, %s) = " , strcpy_test_empty, strcpy_test_string);
@@ -57,24 +57,28 @@ int main()
 
 
     // ft_strdup //
-    char *strdup_test_string = "Hello World 42";
-    char *strdup_result = ft_strdup(strdup_test_string);
-    if (strdup_result)
-    {
-        printf("ft_strdup(%s) = %s\n", strdup_test_string, strdup_result);
-        free(strdup_result);
-    }
-    else
-    {
-        printf("ft_strdup failed\n");
-        printf("Error, errno: %i\n", errno);
-    }
+    // char *strdup_test_string = "more simple";
+    // char *strdup_result = ft_strdup(strdup_test_string);
+    // if (strdup_result)
+    // {
+    //     printf("ft_strdup(%s) = %s\n", strdup_test_string, strdup_result);
+    //     free(strdup_result);
+    // }
+    // else
+    // {
+    //     printf("ft_strdup failed\n");
+    //     printf("Error, errno: %i\n", errno);
+    // }
 
-    char *strdup_test_string2 = "";
+    char *strdup_test_string2 = "Hello World 42";
     char *strdup_result2 = ft_strdup(strdup_test_string2);
     if (strdup_result2)
     {
         printf("ft_strdup(%s) = %s\n", strdup_test_string2, strdup_result2);
+        if (strcmp(strdup_test_string2, strdup_result2) != 0)
+        {
+            printf("strdup_result2 is NOT equal to strdup_test_string2\n");
+        }
         free(strdup_result2);
     }
     else
@@ -83,7 +87,7 @@ int main()
         printf("Error, errno: %i\n", errno);
     }
 
-    char *strdup_test_string3 = "你好世界";
+    char *strdup_test_string3 = "sahth r re  td sa  rye tu  j j635 4 35243 66 432 ";
     char *strdup_result3 = ft_strdup(strdup_test_string3);
     if (strdup_result3)
     {
