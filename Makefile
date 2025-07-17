@@ -5,7 +5,7 @@ AR_RCS             = ar rcs
 NASM = nasm
 NASM_FLAGS = -felf64
 CC = gcc
-CC_FLAGS = -Wall -Wextra -Werror -Iincludes
+CC_FLAGS = -Wall -Wextra -Werror -Iincludes 
 
 SRC_PATH         = srcs/
 SRCS             = ft_strlen.s ft_strcpy.s ft_write.s ft_read.s ft_strdup.s ft_strcmp.s
@@ -30,8 +30,8 @@ $(OBJS_DIR)%.o : $(TEST_PATH)%.c
 	mkdir -p $(dir $@)
 	$(CC) $(CC_FLAGS) -c $< -o $@
 
-$(TEST_PROGRAM): $(TEST_OBJS) $(SRCS_OBJS)
-	$(CC) $(CC_FLAGS) -no-pie -o $(TEST_PROGRAM) $^
+$(TEST_PROGRAM): $(TEST_OBJS) $(NAME)
+	$(CC) $(CC_FLAGS) $(NAME) -o $(TEST_PROGRAM) $^
 
 clean:
 	rm -rf $(OBJS_DIR)

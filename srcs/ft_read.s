@@ -13,7 +13,7 @@ section .text
     .error:
         neg rax          ;  rax is returned as negative by syscall on error
         mov		rdi, rax		; we keep rax in rdi because 
-        call __errno_location     ; get pointer to errno
+        call __errno_location wrt ..plt    ; get pointer to errno
         mov [rax], rdi       ; set errno to rdi
         mov rax, -1         ; return NULL
         ret

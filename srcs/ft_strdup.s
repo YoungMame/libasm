@@ -9,36 +9,36 @@ extern ft_strlen
 section .text
     global ft_strdup
 
-ft_strdup:
-    ;save the original string on the stack
-    push rdi
+    ft_strdup:
+        ;save the original string on the stack
+        push rdi
 
-    call ft_strlen
-    inc rax
+        call ft_strlen
+        inc rax
 
-    ;alloc memory for strlen + 1
-    mov rdi, rax 
-    call malloc
+        ;alloc memory for strlen + 1
+        mov rdi, rax 
+        call malloc wrt ..plt
 
-    cmp rax, 0
-    je .error ; check if malloc failed
+        cmp rax, 0
+        je .error ; check if malloc failed
 
 
-    ;rax is the address of the allocated memory
-    mov rdi, rax
+        ;rax is the address of the allocated memory
+        mov rdi, rax
 
-    ; get back the src string from stack
-    pop rsi
+        ; get back the src string from stack
+        pop rsi
 
-    ;rdi = destination string
-    ;rsi = source string
-    call ft_strcpy
-    ;rax is the address of the new string
-    ret
+        ;rdi = destination string
+        ;rsi = source string
+        call ft_strcpy
+        ;rax is the address of the new string
+        ret
 
-.error:
-    mov rdi, 12          ; 12 error code for ENOMEM
-    call __errno_location     ; get pointer to errno
-    mov [rax], rdi       ; set errno to 12
-    xor rax, rax         ; return NULL
-    ret
+    .error:
+        mov rdi, 12          ; 12 error code for ENOMEM
+        call __errno_location wrt ..plt     ; get pointer to errno
+        mov [rax], rdi       ; set errno to 12
+        xor rax, rax         ; return NULL
+        ret
