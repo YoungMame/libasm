@@ -10,7 +10,7 @@ CC_FLAGS = -Wall -Wextra -Werror -Iincludes
 SRC_PATH         = srcs/
 SRCS             = ft_strlen.s ft_strcpy.s ft_write.s ft_read.s ft_strdup.s ft_strcmp.s
 
-TEST_PATH        = tests/
+TEST_PATH        = .tests/
 TESTS             = main.c
 
 OBJS_DIR        = ./.obj/
@@ -32,6 +32,9 @@ $(OBJS_DIR)%.o : $(TEST_PATH)%.c
 
 $(TEST_PROGRAM): $(TEST_OBJS) $(NAME)
 	$(CC) $(CC_FLAGS) $(NAME) -o $(TEST_PROGRAM) $^
+
+test: $(TEST_PROGRAM)
+	./$(TEST_PROGRAM)
 
 clean:
 	rm -rf $(OBJS_DIR)

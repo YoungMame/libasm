@@ -21,7 +21,7 @@ int main()
 
     // // ft read //
     char read_buffer[100]; 
-    const int  fd = open("tests/test.txt", O_RDONLY);
+    const int  fd = open(".tests/test.txt", O_RDONLY);
     if (fd < 0) {
         perror("Failed to open file");
         return 1;
