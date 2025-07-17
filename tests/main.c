@@ -55,21 +55,6 @@ int main()
     ft_strcpy(strcpy_test_empty, strcpy_test_string);
     printf("%s\n", strcpy_test_empty);
 
-
-    // ft_strdup //
-    // char *strdup_test_string = "more simple";
-    // char *strdup_result = ft_strdup(strdup_test_string);
-    // if (strdup_result)
-    // {
-    //     printf("ft_strdup(%s) = %s\n", strdup_test_string, strdup_result);
-    //     free(strdup_result);
-    // }
-    // else
-    // {
-    //     printf("ft_strdup failed\n");
-    //     printf("Error, errno: %i\n", errno);
-    // }
-
     char *strdup_test_string2 = "Hello World 42";
     char *strdup_result2 = ft_strdup(strdup_test_string2);
     if (strdup_result2)

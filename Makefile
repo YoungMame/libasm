@@ -30,7 +30,7 @@ $(OBJS_DIR)%.o : $(TEST_PATH)%.c
 	mkdir -p $(dir $@)
 	$(CC) $(CC_FLAGS) -c $< -o $@
 
-test: $(TEST_OBJS) $(SRCS_OBJS)
+$(TEST_PROGRAM): $(TEST_OBJS) $(SRCS_OBJS)
 	$(CC) $(CC_FLAGS) -no-pie -o $(TEST_PROGRAM) $^
 
 clean:
