@@ -51,7 +51,7 @@ int main()
     // // ft_strcpy //
     char *strcpy_test_string = "Hello World 42";
     char strcpy_test_empty[100] = "";
-    printf("strcpy_test_empty after ft_strlen(%s, %s) = " , strcpy_test_empty, strcpy_test_string);
+    printf("strcpy_test_empty after ft_strcpy(%s, %s) = " , strcpy_test_empty, strcpy_test_string);
     ft_strcpy(strcpy_test_empty, strcpy_test_string);
     printf("%s\n", strcpy_test_empty);
 

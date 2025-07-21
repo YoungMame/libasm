@@ -1,2 +1,2 @@
 *.s linguist-detectable=true
-tests/* linguist-vendored
+.tests/* linguist-vendored
